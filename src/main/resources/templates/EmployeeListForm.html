@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Employee List</title>
+</head>
+<body>
+
+
+	<th:block th:insert="~{Header.html}"></th:block>
+	<div class="container-fluid">
+
+		<div class="card">
+
+			<div class="card-header bg-primary text-center text-white">
+				<h5>Employee List</h5>
+			</div>
+
+			<div class="card-body ">
+
+				<table class="table">
+
+					<thead>
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Gender</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>DoB</th>
+							<th>Company</th>
+							<th>Post</th>
+							<th>Salary</th>
+							<th>JoinDate</th>
+							<th>Department name</th>
+							<th>Country</th>
+							<th>City</th>
+							<th>State</th>
+							<th>Zipcode</th>
+							<th>Employee Actions</th>
+
+						</tr>
+
+
+					</thead>
+
+					<tbody>
+						<tr th:each="e:${eList}">
+							<td>[[${e.fname}]]</td>
+							<td>[[${e.lname}]]</td>
+							<td>[[${e.gender}]]</td>
+							<td>[[${e.email}]]</td>
+							<td>[[${e.phone}]]</td>
+							<td>[[${e.dob}]]</td>
+							<td>[[${e.company}]]</td>
+							<td>[[${e.post}]]</td>
+							<td>[[${e.salary}]]</td>
+							<td>[[${e.joinDate}]]</td>
+
+							<td>
+								<ul>
+									<li th:each="d : ${e.department}"><span
+										th:text="${d.dpt_name}">Department Name</span></li>
+								</ul>
+							</td> 
+							<td> </td>
+
+							<td>[[${e.address.country}]]</td>
+							<td>[[${e.address.city}]]</td>
+							<td>[[${e.address.state}]]</td>
+							<td>[[${e.address.zipcode}]]</td>
+
+							<td>
+								<a th:href="@{/employee/edit(id=${e.id})}">	<input type="submit" value="Edit" class="btn btn-success">	</a>
+								<a th:href="@{/employee/delete(id=${e.id})}">	<input type="submit" value="Delete"	class="btn btn-danger">	</a>
+							</td>
+
+
+						</tr>
+
+
+					</tbody>
+
+				</table>
+
+			</div>
+
+			<div class="card-footer bg-warning text-center">copyright@2024
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+</body>
+</html>
